@@ -1,0 +1,641 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eDPI Calculator: Find Your Perfect Mouse Sensitivity for Gaming</title>
+    <meta name="description" content="Calculate your effective DPI (eDPI) instantly. Learn how DPI and sensitivity work together to build muscle memory. Free tool for Valorant, CS2, Apex, and more.">
+    <meta name="author" content="eDPI Calculator.tech">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="eDPI Calculator: Find Your Perfect Mouse Sensitivity for Gaming">
+    <meta property="og:description" content="Calculate your effective DPI (eDPI) instantly. Learn how DPI and sensitivity work together to build muscle memory.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://edpicalculator.tech/">
+    <meta property="og:site_name" content="eDPI Calculator">
+    <meta property="og:image" content="https://edpicalculator.tech/edpi-calculator.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="eDPI Calculator: Find Your Perfect Mouse Sensitivity">
+    <meta name="twitter:description" content="Calculate your effective DPI instantly. Free tool for gamers.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://edpicalculator.tech/" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "eDPI Calculator",
+  "url": "https://edpicalculator.tech/",
+  "image": "https://edpicalculator.tech/edpi-calculator.jpg",
+  "description": "Free online eDPI calculator for gamers. Instantly calculate your effective DPI using mouse DPI and in-game sensitivity.",
+  "applicationCategory": "WebApplication",
+  "softwareVersion": "1.0",
+  "datePublished": "2026-03-11",
+  "operatingSystem": "Windows, macOS, Linux",
+  "browserRequirements": "Requires JavaScript enabled",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "eDPI Calculator.tech",
+    "url": "https://edpicalculator.tech/"
+  },
+  "featureList": [
+    "Real-time eDPI calculation",
+    "Sensitivity level classification",
+    "Game-specific eDPI recommendations",
+    "cm/360 explanation guide",
+    "FPS sensitivity conversion method"
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is eDPI and how do you calculate it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "eDPI (effective Dots Per Inch) is calculated by multiplying your mouse DPI by your in-game sensitivity. For example, 800 DPI multiplied by 0.5 sensitivity equals 400 eDPI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What eDPI do professional Valorant players use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most professional Valorant players use an eDPI between 200 and 400. The average pro setting is around 280 eDPI for improved precision and recoil control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is lower or higher eDPI better for FPS games?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lower eDPI generally improves precision in tactical shooters like Valorant and CS2. Higher eDPI allows faster turning in games like Apex Legends or Overwatch. The best setting depends on your playstyle and desk space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert my sensitivity between games?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First calculate your current eDPI. Then divide that eDPI by your mouse DPI to get your equivalent in-game sensitivity for another title."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between DPI and eDPI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DPI is a hardware setting on your mouse that determines cursor speed. eDPI combines mouse DPI with in-game sensitivity to provide a universal measurement across different games."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [{
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://edpicalculator.tech/"
+ }]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "eDPI Calculator",
+ "url": "https://edpicalculator.tech/",
+ "potentialAction": {
+   "@type": "SearchAction",
+   "target": "https://edpicalculator.tech/?q={search_term_string}",
+   "query-input": "required name=search_term_string"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ImageObject",
+ "contentUrl": "https://edpicalculator.tech/edpi-calculator.jpg",
+ "creator": {
+   "@type": "Organization",
+   "name": "eDPI Calculator.tech"
+ },
+ "license": "https://edpicalculator.tech/",
+ "acquireLicensePage": "https://edpicalculator.tech/",
+ "creditText": "eDPI Calculator.tech"
+}
+</script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/edpi.css' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">eDPI Calculator</div>
+            
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Free eDPI Calculator for Gaming Mouse Sensitivity</h1>
+                    <p class="hero-subtitle">Calculate your effective DPI in seconds. The universal metric for consistent aim across every game.</p>
+                    <div class="hero-badge">
+                        <span class="badge-item"><i class="fas fa-check-circle"></i> Precision Tool</span>
+                        <span class="badge-item"><i class="fas fa-bolt"></i> Instant Results</span>
+                        <span class="badge-item"><i class="fas fa-gamepad"></i> Works for All Games</span>
+                        <span class="badge-item"><i class="fas fa-chart-line"></i> Pro Settings</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="tagline">Professional-grade tool to calculate your effective DPI for optimal gaming performance</p>
+        </header>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Calculate Your eDPI</h2>
+            </div>
+            <div class="card-body">
+                <div class="alert">
+                    <div class="alert-icon"><i class="fas fa-info-circle"></i></div>
+                    <div>
+                        <strong>What is eDPI?</strong>
+                        <p>eDPI (effective Dots Per Inch) is the only number that truly matters. It is calculated by multiplying your hardware (DPI) and your software (Sensitivity).</p>
+                        <div class="formula">eDPI = DPI × In-game Sensitivity</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dpi"><i class="fas fa-tachometer-alt"></i> Mouse DPI</label>
+                    <input type="number" id="dpi" class="form-control" placeholder="Enter your mouse DPI (e.g., 800)" min="100" max="30000" step="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="sensitivity"><i class="fas fa-bullseye"></i> In-game Sensitivity</label>
+                    <input type="number" id="sensitivity" class="form-control" placeholder="Enter your in-game sensitivity (e.g., 0.5)" min="0.1" max="100" step="0.01">
+                </div>
+
+                <div class="button-group">
+                    <button id="calculate-btn" class="btn btn-primary"><i class="fas fa-calculator"></i> Calculate eDPI</button>
+                    <button id="reset-btn" class="btn btn-danger"><i class="fas fa-redo"></i> Reset Values</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3><i class="fas fa-tachometer-alt"></i> Your eDPI</h3>
+                        <div class="stat-value" id="edpi-result">--</div>
+                        <div class="stat-label">Effective Dots Per Inch</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fas fa-info-circle"></i> Sensitivity Level</h3>
+                        <div class="stat-value" id="sensitivity-level">--</div>
+                        <div class="stat-label">Based on your eDPI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body content-section">
+                <h2>What Is eDPI?</h2>
+                <div class="image-container">
+    <img 
+        src="{% static 'images/edpi-calculator.jpg' %}" 
+        alt="Image of the eDPI Calculator showing DPI, and eDPI result" 
+        class="edpi-image"
+    >
+    <p class="image-caption">Use the eDPI Calculator to instantly find your optimal mouse sensitivity for gaming.</p>
+</div>
+                <p>eDPI (Effective Dots Per Inch) is the only number that truly matters. It is calculated by multiplying your hardware (DPI) and your software (Sensitivity). This universal metric allows you to compare sensitivity across different games and setups.</p>
+                
+                <h2>The Core Formula</h2>
+                <p>To calculate your true sensitivity you must use this formula:</p>
+                <div class="formula">eDPI = DPI × Sensitivity</div>
+                
+                <h2>Why eDPI is the Great Equalizer</h2>
+                <p>Let's consider two players:</p>
+                <ul>
+                    <li><strong>Player A:</strong> 400 DPI and 2.0 Sensitivity</li>
+                    <li><strong>Player B:</strong> 800 DPI and 1.0 Sensitivity</li>
+                </ul>
+                <p>At first glance, these two players have entirely different settings. But both of these players have the same eDPI of 800. The distance their crosshairs will move on the screen when they move their mice across their pads will be exactly the same. This is why you will never hear a player say "I use 1.0, why are you using 2.0?"</p>
+                
+                <h2>What exactly is DPI?</h2>
+                <p>DPI (Dots Per Inch) is the hardware sensitivity of your mouse sensor. It is a measure of how many digital counts or steps your sensor gives you when you move the mouse one inch across a surface.</p>
+                <ul>
+                    <li><strong>Higher DPI:</strong> More digital reports are sent to the PC per inch of mouse movement. The cursor will move farther on your screen for the same physical hand movement.</li>
+                    <li><strong>Lower DPI:</strong> Fewer digital reports are sent. You have to move your hand farther for the same cursor movement.</li>
+                </ul>
+                
+                <h2>Why Sensitivity is the Basis of Aim</h2>
+                <p>If you want to become a master of your aim in online games then DPI, sensitivity and eDPI are not something you can choose to learn or not — it is a necessity. These three components are the Holy Trinity of mechanical aiming. They determine the movement of your crosshair, the speed of your reactions and the tracking of your enemies along with the consistency of your muscle memory.</p>
+                
+                <p>Most gamers are caught up in the <strong>Pro Setting Trap</strong>; they simply copy the numbers of a world class player like s1mple or TenZ without considering the differences in hardware and resolution. Others have <strong>Sensitivity Randomness</strong>; they change their sensitivity after every losing game which essentially resets their motor learning in their brain.</p>
+                
+                <h2>The Myth of "Higher is Always Better"</h2>
+                <p>Marketing teams love to tout mice with 25000+ DPI. The truth is no serious gamer uses such high DPI. High DPI can cause jitter where the sensor is so sensitive it can pick up the microscopic flaws on your mousepad or the natural tremors of your human hand, causing the crosshair to shake.</p>
+                
+                <h2>Modern DPI Standards and Native Resolution</h2>
+                <p>Most contemporary sensors have a native resolution where they work best without any artificial smoothing. The usual standards are:</p>
+                <ul>
+                    <li><strong>400-800 DPI:</strong> The Gold Standard for tactical gamers (CS2, Valorant)</li>
+                    <li><strong>1200-1600 DPI:</strong> A good middle-of-the-road option for high resolution monitors (1440p or 4K)</li>
+                    <li><strong>2000+ DPI:</strong> Usually only for MOBA gamers or those with very limited desk space</li>
+                </ul>
+                
+                <h2>Extensive eDPI Calculation Examples</h2>
+                <p>To master the math, let's look at various scenarios across different DPI tiers.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>DPI</th>
+                            <th>In-Game Sens</th>
+                            <th>Calculation</th>
+                            <th>Total eDPI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>The Low Sens Pro</strong></td>
+                            <td>400</td>
+                            <td>1.50</td>
+                            <td>400 × 1.5</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td><strong>The Precision Hybrid</strong></td>
+                            <td>800</td>
+                            <td>0.85</td>
+                            <td>800 × 0.85</td>
+                            <td>680</td>
+                        </tr>
+                        <tr>
+                            <td><strong>The High DPI User</strong></td>
+                            <td>1600</td>
+                            <td>0.40</td>
+                            <td>1600 × 0.4</td>
+                            <td>640</td>
+                        </tr>
+                        <tr>
+                            <td><strong>The Fast Twitcher</strong></td>
+                            <td>1200</td>
+                            <td>1.25</td>
+                            <td>1200 × 1.25</td>
+                            <td>1500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>The Ultra High User</strong></td>
+                            <td>2000</td>
+                            <td>2.50</td>
+                            <td>2000 × 2.5</td>
+                            <td>5000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Professional eDPI Ranges by Game Genre</h2>
+                <p>Not all games are played the same way. Your eDPI must adjust to the movement requirements of your particular game.</p>
+                
+                <h3>Tactical Shooters (Precision First)</h3>
+                <p>Games like Valorant, CS2 and Rainbow Six Siege.</p>
+                <ul>
+                    <li><strong>eDPI Range:</strong> 200 – 400 (Valorant) and 600 – 1200 (CS2)</li>
+                    <li><strong>Requirement:</strong> Pixel perfect accuracy and recoil management</li>
+                </ul>
+                
+                <h3>Hero Shooters & Tracking Games</h3>
+                <p>Games like Overwatch 2, Apex Legends and The Finals.</p>
+                <ul>
+                    <li><strong>eDPI Range:</strong> 3000 – 6000 (Overwatch) and 800 – 1600 (Apex)</li>
+                    <li><strong>Requirement:</strong> Enemies move vertically and quickly. You have to track flying enemies and quickly turn 180 degrees</li>
+                </ul>
+                
+                <h3>Build Based & Battle Royales</h3>
+                <p>Games like Fortnite and Warzone.</p>
+                <ul>
+                    <li><strong>eDPI Range:</strong> High variability</li>
+                    <li><strong>Requirement:</strong> Fortnite demands high eDPI for quick building/editing, while Warzone calls for balanced eDPI for long-range tracking</li>
+                </ul>
+                
+                <h2>Matching and Converting Sensitivity</h2>
+                <p>If you want to transfer your favorite sensitivity from one DPI to another, or from one game to another, you have to employ the eDPI method.</p>
+                
+                <h3>Changing DPI but Keeping the Feel</h3>
+                <p>If you change from 400 DPI to 1600 DPI but want your aim sensitivity to remain the same:</p>
+                <ol>
+                    <li>Determine your current eDPI (400 × 2.0 = 800)</li>
+                    <li>Divide that eDPI by your new DPI (800 ÷ 1600 = 0.5)</li>
+                    <li>Enter your new in-game sensitivity as 0.5</li>
+                </ol>
+                
+                <h3>The Physical Metric: cm/360</h3>
+                <p>While eDPI is very useful for comparisons, the cm/360 scale is the most universal. It calculates how many centimeters you need to move your mouse to achieve a full 360-degree turn in-game.</p>
+                <ul>
+                    <li><strong>10-20 cm/360 (Fast):</strong> Wrist aiming, best for fast turning but terrible for long-range aiming</li>
+                    <li><strong>25-40 cm/360 (Medium):</strong> The sweet spot most professional players use</li>
+                    <li><strong>50+ cm/360 (Slow):</strong> Arm aiming, needs an enormous mousepad, best for snipers</li>
+                </ul>
+                
+                <h2>Aiming Styles - Arm vs Wrist</h2>
+                <p>Your eDPI determines what part of your body does the work.</p>
+                
+                <h3>Arm Aimers (Low eDPI)</h3>
+                <p>You use your elbow as a pivot point.</p>
+                <ul>
+                    <li><strong>Pros:</strong> Less chance of Carpal Tunnel, more surface area to develop muscle memory, more consistent in the long run</li>
+                    <li><strong>Cons:</strong> Needs an enormous desk, can be very tiring during long gaming sessions</li>
+                </ul>
+                
+                <h3>Wrist Aimers (High eDPI)</h3>
+                <p>You use your wrist as the pivot.</p>
+                <ul>
+                    <li><strong>Pros:</strong> Extremely quick reaction times, needs very little desk space</li>
+                    <li><strong>Cons:</strong> Higher chance of straining/injuring your wrist, micro-adjusting is much more difficult</li>
+                </ul>
+                
+                <h2>Common Sensitivity Mistakes</h2>
+                
+                <h3>Pixel Skipping</h3>
+                <p>When using a very low DPI setting (such as 400) with a very high in-game multiplier (such as 10.0), there can be pixel skipping where the crosshair skips over small spaces. It's usually better to use a higher DPI setting (800 or 1600) with a lower in-game multiplier.</p>
+                
+                <h3>Windows Mouse Speed Slider</h3>
+                <p>Always set the Windows slider to 6/11. Anything else introduces problematic software scaling that will affect sensor accuracy.</p>
+                
+                <h3>Mouse Acceleration</h3>
+                <p>This makes your eDPI change depending on your speed. While some pros use it, it adds massive complexity that negatively affects 99% of players.</p>
+                
+                <h2>Step-by-Step Optimization Strategy</h2>
+                <p>Don't just pick a number. Use the PSA Method (Perfect Sensitivity Approximation):</p>
+                <ol>
+                    <li><strong>Start with a 360:</strong> Adjust your sensitivity so that one full swipe across your mousepad gives exactly a 360-degree turn.</li>
+                    <li><strong>Tracking Test:</strong> Go into a practice range. Pick a fixed point on a wall. Move left and right while keeping your crosshair on that point. If you overshoot, lower sensitivity; if you struggle to keep up, raise it.</li>
+                    <li><strong>The 10% Rule:</strong> If you think you're close, only change your sensitivity by 10% of your current eDPI.</li>
+                </ol>
+                
+                <h2>Summary Table for Quick Reference</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User Type</th>
+                            <th>Preferred DPI</th>
+                            <th>Typical eDPI (Source)</th>
+                            <th>Aim Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tactical Pro</td>
+                            <td>400 / 800</td>
+                            <td>600 - 900</td>
+                            <td>Arm / Hybrid</td>
+                        </tr>
+                        <tr>
+                            <td>Arena Pro</td>
+                            <td>800 / 1600</td>
+                            <td>1200 - 2000</td>
+                            <td>Hybrid / Wrist</td>
+                        </tr>
+                        <tr>
+                            <td>Casual Gamer</td>
+                            <td>1000 - 1200</td>
+                            <td>1000 - 1500</td>
+                            <td>Wrist</td>
+                        </tr>
+                        <tr>
+                            <td>The Sniping God</td>
+                            <td>400</td>
+                            <td>400 - 600</td>
+                            <td>Full Arm</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Final Deep Conclusion</h2>
+                <p>Optimizing your sensitivity is a process, not an endpoint. Learning about eDPI is the beginning of a professional journey. It takes the guesswork out of the equation and enables you to objectively study your gameplay.</p>
+                
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <h3>What's the difference between DPI and eDPI?</h3>
+                    <p>DPI (Dots Per Inch) is a hardware setting on your mouse that determines how many pixels your cursor moves per inch of physical movement. eDPI (effective DPI) combines your mouse DPI with your in-game sensitivity to give you a universal sensitivity measurement that works across all games.</p>
+                    
+                    <h3>How do I find my mouse's DPI?</h3>
+                    <p>Most gaming mice have software (like Logitech G Hub, Razer Synapse, or SteelSeries Engine) that displays your current DPI. If you don't have the software, check your mouse's specifications online or test using our calculator with a known sensitivity.</p>
+                    
+                    <h3>Should I use a high or low eDPI?</h3>
+                    <p>Lower eDPI (200-800) generally provides better precision for tactical shooters like Valorant and CS:GO. Higher eDPI (1000+) allows faster reactions in fast-paced games like Apex Legends or Overwatch. Most pro players use surprisingly low eDPI for maximum precision.</p>
+                    
+                    <h3>How can I convert my sensitivity between games?</h3>
+                    <p>First calculate your current eDPI using our calculator. Then divide that eDPI by your mouse DPI to get the equivalent sensitivity in your new game. For example: 400 eDPI ÷ 800 DPI = 0.5 sensitivity in the new game.</p>
+                    
+                    <h3>Does mouse acceleration affect eDPI?</h3>
+                    <p>Yes, mouse acceleration (also called "enhance pointer precision" in Windows) changes how your cursor moves based on speed, making eDPI calculations inconsistent. For competitive gaming, always disable mouse acceleration for consistent muscle memory.</p>
+                    
+                    <h3>How often should I change my sensitivity?</h3>
+                    <p>Once you find a comfortable eDPI, stick with it! Constantly changing sensitivity prevents you from developing muscle memory. Give any new sensitivity at least 1-2 weeks of consistent use before deciding if it works for you.</p>
+                    
+                    <h3>What eDPI do professional Valorant players use?</h3>
+                    <p>Professional Valorant players typically use an eDPI between 200-400. The average pro eDPI in Valorant is around 280. This lower sensitivity allows for precise crosshair placement and recoil control.</p>
+                    
+                    <h3>What is cm/360 and how do I calculate it?</h3>
+                    <p>cm/360 measures how many centimeters of mouse movement are needed to perform a full 360-degree turn in-game. To calculate it, you need your eDPI and your Windows pointer speed setting. Generally, lower eDPI results in higher cm/360 values.</p>
+                </div>
+                
+                <div class="featured-image-container">
+                    <p class="image-caption">Remember: Consistency trumps innovation. Hardware (DPI) + Software (Sens) = Reality (eDPI). Your mousepad and grip are as important as the numbers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms of Service</a>
+                <a href="/contact/">Contact</a>
+                <a href="/about/">About Us</a>
+            </div>
+            <p>© 2026 eDPI Calculator.tech - The Ultimate eDPI Calculator for Gamers</p>
+            <p>This tool is not affiliated with any game developers or mouse manufacturers.</p>
+        </footer>
+    </div>
+
+    <script>
+        // DOM Elements
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const dpiInput = document.getElementById('dpi');
+        const sensitivityInput = document.getElementById('sensitivity');
+        const edpiResult = document.getElementById('edpi-result');
+        const sensitivityLevel = document.getElementById('sensitivity-level');
+        
+        // Calculate eDPI function
+        function calculateEdpi() {
+            const dpi = parseFloat(dpiInput.value);
+            const sensitivity = parseFloat(sensitivityInput.value);
+            
+            if (isNaN(dpi) || isNaN(sensitivity) || dpi <= 0 || sensitivity <= 0) {
+                edpiResult.textContent = '--';
+                sensitivityLevel.textContent = '--';
+                sensitivityLevel.style.color = '';
+                return;
+            }
+            
+            const edpi = dpi * sensitivity;
+            
+            // Format the eDPI result
+            edpiResult.textContent = edpi % 1 === 0 ? edpi : edpi.toFixed(1);
+            
+            // Determine sensitivity level
+            if (edpi < 200) {
+                sensitivityLevel.textContent = 'Very Low';
+                sensitivityLevel.style.color = 'var(--primary)';
+            } else if (edpi < 500) {
+                sensitivityLevel.textContent = 'Low';
+                sensitivityLevel.style.color = 'var(--primary)';
+            } else if (edpi < 1000) {
+                sensitivityLevel.textContent = 'Medium';
+                sensitivityLevel.style.color = 'var(--warning)';
+            } else if (edpi < 2000) {
+                sensitivityLevel.textContent = 'High';
+                sensitivityLevel.style.color = 'var(--warning)';
+            } else {
+                sensitivityLevel.textContent = 'Very High';
+                sensitivityLevel.style.color = 'var(--danger)';
+            }
+            
+            // Add animation to result
+            edpiResult.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                edpiResult.style.transform = 'scale(1)';
+            }, 200);
+            
+            // Show success animation
+            showSuccessAnimation();
+        }
+        
+        // Show success animation function
+        function showSuccessAnimation() {
+            const resultElement = edpiResult;
+            
+            // Create and add animation style if not exists
+            if (!document.getElementById('success-animation-style')) {
+                const style = document.createElement('style');
+                style.id = 'success-animation-style';
+                style.textContent = `
+                    @keyframes successPulse {
+                        0% { box-shadow: 0 0 0 0 rgba(74, 107, 255, 0.3); }
+                        70% { box-shadow: 0 0 0 10px rgba(74, 107, 255, 0); }
+                        100% { box-shadow: 0 0 0 0 rgba(74, 107, 255, 0); }
+                    }
+                    
+                    .success-pulse {
+                        animation: successPulse 0.6s ease;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            resultElement.classList.add('success-pulse');
+            setTimeout(() => {
+                resultElement.classList.remove('success-pulse');
+            }, 600);
+        }
+        
+        // Reset function
+        function resetCalculator() {
+            dpiInput.value = '';
+            sensitivityInput.value = '';
+            edpiResult.textContent = '--';
+            sensitivityLevel.textContent = '--';
+            sensitivityLevel.style.color = '';
+            
+            // Add visual feedback
+            resetBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                resetBtn.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Focus on DPI input after reset
+            dpiInput.focus();
+        }
+        
+        // Event Listeners
+        calculateBtn.addEventListener('click', calculateEdpi);
+        resetBtn.addEventListener('click', resetCalculator);
+        
+        dpiInput.addEventListener('input', calculateEdpi);
+        sensitivityInput.addEventListener('input', calculateEdpi);
+        
+        // Keyboard shortcut support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                calculateEdpi();
+                e.preventDefault();
+            }
+            if (e.key === 'Escape') {
+                resetCalculator();
+            }
+        });
+        
+        // Initialize calculator on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            dpiInput.value = '';
+            sensitivityInput.value = '';
+            edpiResult.textContent = '--';
+            sensitivityLevel.textContent = '--';
+            dpiInput.focus();
+        });
+        
+        // Add visual feedback for inputs
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+            
+            input.addEventListener('input', function() {
+                const value = parseFloat(this.value);
+                if (value < 0) {
+                    this.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
